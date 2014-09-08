@@ -16,15 +16,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	int repalgo = 0;
 	int mainmemsize = 0;
 	unsigned int addresstoload = 0;
+	int tempBuff = 0;
 
 	// Collect simulation settings from user
+	cout << "Cache Load Simulator (Win32)" << endl;
+	cout << "(c) 2014 Vincent Fiestada" << endl;
+	cout << "See README.txt for more info" << endl;
+	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "SIMULATION SETTINGS:" << endl;
 	cout << "Cache size: (2, 4 or 8)";
 	cin >> size;
 	// assert
 	if (size != 2 && size != 4 && size != 8)
 	{
-		cout << "ERROR! Cache Size must be either 2, 4 or 8." << endl << "Restart simulation" << endl;
+		cout << "ERROR! Cache Size must be either 2, 4 or 8." << endl << "Enter anything to exit simulation" << endl;
+		cin >> tempBuff;
 		return 1;
 	}
 	cout << endl << "Mapping Algorithm ( 0 - Direct, 1 - Set Assoc, 2 - Full Assoc )" << endl;
@@ -33,8 +39,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	// assert
 	if (mapalgo < 0 || mapalgo > 2)
 	{
-		cout << "ERROR! Mapping algorithm index out of range" << endl << "Restart simulation" << endl;
-		return 1;
+		cout << "ERROR! Mapping algorithm index out of range" << endl << "Enter anything to exit simulation" << endl;
+		cin >> tempBuff;
+		return 2;
 	}
 	cout << endl << "Replacement Algorithm (0 - FIFO, 1 - LRU, 2 - LFU )" << endl;
 	cout << "Enter choice: ";
@@ -42,8 +49,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	// assert
 	if (repalgo < 0 || repalgo > 2)
 	{
-		cout << "ERROR! Replacement algorithm index out of range" << endl << "Restart simulation" << endl;
-		return 1;
+		cout << "ERROR! Replacement algorithm index out of range" << endl << "Enter anything to exit simulation" << endl;
+		cin >> tempBuff;
+		return 3;
 	}
 	
 	mainmemsize = size*size;
